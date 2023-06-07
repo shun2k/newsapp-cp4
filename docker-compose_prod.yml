@@ -28,17 +28,17 @@ services:
       - NEWSAPI_URL=${NEWSAPI_URL}
       - NEWSAPI_KEY=${NEWSAPI_KEY}
 
-  db:
-    image: mysql:5.7
-    volumes:
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-      - db-data:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASS}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS}
-    ports:
-      - ${DB_PORT}:3306
-    restart: always
+  # db:
+  #   image: mysql:5.7
+  #   volumes:
+  #     - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+  #     - db-data:/var/lib/mysql
+  #   environment:
+  #     - MYSQL_DATABASE=${DB_NAME}
+  #     - MYSQL_USER=${DB_USER}
+  #     - MYSQL_PASSWORD=${DB_PASS}
+  #     - MYSQL_ROOT_PASSWORD=${DB_PASS}
+  #   ports:
+  #     - ${DB_PORT}:3306
+  #   restart: always
 
