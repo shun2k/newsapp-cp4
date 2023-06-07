@@ -33,13 +33,13 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
-        - name: update php
-          run: |
-            sudo apt-get update 
-            sudo apt-get install -y docker-compose
+        # - name: update php
+        #   run: |
+        #     sudo apt-get update 
+        #     sudo apt-get install -y docker-compose
 
-        - name: build dockerfile.prod
-          run: docker-compose -f docker-compose_prod.yml up -d --build
+        # - name: build dockerfile.prod
+        #   run: docker-compose -f docker-compose_prod.yml up -d --build
    
         - name: Set up Heroku
           uses: akhileshns/heroku-deploy@v3.12.14
