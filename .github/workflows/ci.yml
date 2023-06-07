@@ -31,7 +31,7 @@ jobs:
         APP_DEFAULT_LOCALE: ${{ vars.APP_DEFAULT_LOCALE }}
         APP_DEFAULT_TIMEZONE: ${{ vars.APP_DEFAULT_TIMEZONE }}
         SECURITY_SALT: ${{ secrets.SECURITY_SALT }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        # DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
         OPENWEATHER_ONEDAY_URL: ${{ vars.OPENWEATHER_ONEDAY_URL }}
         OPENWEATHER_FIVEDAYS_URL: ${{ vars.OPENWEATHER_FIVEDAYS_URL }}
@@ -50,7 +50,7 @@ jobs:
 
     - name: Start Docker Compose
       run: |
-        docker-compose -f docker-compose_prod.yml up -d --build
+        docker-compose -f docker-compose_ci.yml up -d --build
         docker exec newsapp-cp4_php_1 composer update
 
     - name: Start PHPUnit     
