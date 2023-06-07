@@ -48,7 +48,7 @@ jobs:
       run: docker exec newsapp-cp4_php_1 vendor/bin/phpunit
     
     - name: Down docker-compose
-      run: docker-compose down
+      run: docker-compose -f docker-compose_ci.yml down
   
 
     # - name: Run PHPUnit
