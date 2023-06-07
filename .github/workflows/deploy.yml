@@ -32,38 +32,35 @@ jobs:
     steps:
         - name: Checkout repository
           uses: actions/checkout@v2
-        
-        # - name: Set up PHP
-        #   run: |
-        #     heroku update
-        #     sudo apt-get update
-        #     sudo apt-get install -y docker-compose
-        #     docker-compose -f docker-compose_prod.yml up -d --build
-        #     docker exec news_cakephp4_php_1 composer update
-         
+
+        - name: update php
+          run: |
+            sudo apt-get update 
+            sudo apt-get install -y docker-compose
+
+        - name: build dockerfile.prod
+          run: docker-compose -f docker-compose_prod.yml up -d --build
+   
         - name: Set up Heroku
           uses: akhileshns/heroku-deploy@v3.12.14
           with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "newsapp-cp4"
             heroku_email: ${{secrets.HEROKU_EMAIL}} 
-            usedocker: true
-        - name: update php
-          run: |
-            heroku update
-            sudo apt-get update
-
-        # sudo apt-get install -y docker-compose
-        
-        - name: build dockerfile.prod
-          run: docker build -t registry.heroku.com/newsapp-cp4/web -f Dockerfile.prod
+            usedocker: true   
            
-        - name: push registry
-          run: docker push registry.heroku.com/newsapp-cp4/web
-            
+        # - name: push registry
+        #   run: docker push registry.heroku.com/newsapp-cp4/web           
         - name: db migration
           run: docker exec newsapp-cp4_php_1 bin/cake migrations migrate
 
             # docker exec newsapp-cp4_php_1 composer update  
             
             
+         # - name: Set up PHP
+        #   run: |
+        #     heroku update
+        #     sudo apt-get update
+        #     sudo apt-get install -y docker-compose
+        #     docker-compose -f docker-compose_prod.yml up -d --build
+        #     docker exec news_cakephp4_php_1 composer update
