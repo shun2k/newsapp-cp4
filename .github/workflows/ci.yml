@@ -25,7 +25,7 @@ jobs:
         PMA_TEST_PASS: ${{ secrets.PMA_TEST_PASS }}
         PMA_TEST_PORT: ${{ secrets.PMA_TEST_PORT }}
 
-        APP_NAME: ${{ vars.APP_NAME }}
+        # APP_NAME: ${{ vars.APP_NAME }}
         DEBUG: ${{ vars.DEBUG }}
         APP_ENCODING: ${{ vars.APP_ENCODING }}
         APP_DEFAULT_LOCALE: ${{ vars.APP_DEFAULT_LOCALE }}
@@ -51,10 +51,10 @@ jobs:
     - name: Start Docker Compose
       run: |
         docker-compose -f docker-compose_prod.yml up -d --build
-        docker exec news_cakephp4_php_1 composer update
+        docker exec newsapp-cp4_php_1 composer update
 
     - name: Start PHPUnit     
-      run: docker exec news_cakephp4_php_1 vendor/bin/phpunit
+      run: docker exec newsapp-cp4_php_1 vendor/bin/phpunit
     
     - name: Down docker-compose
       run: docker-compose down
