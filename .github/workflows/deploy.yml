@@ -47,12 +47,22 @@ jobs:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "newsapp-cp4"
             heroku_email: ${{secrets.HEROKU_EMAIL}} 
-        - run: |
+        - name: update php
+          run: |
             heroku update
             sudo apt-get update
-            sudo apt-get install -y docker-compose
-            docker build -t registry.heroku.com/newsapp-cp4/web -f Dockerfile.prod
-            docker push registry.heroku.com/newsapp-cp4/web
-            docker exec newsapp-cp4_php_1 composer update  
-            docker exec newsapp-cp4_php_1 bin/cake migrations migrate
+
+        # sudo apt-get install -y docker-compose
+        
+        - name: build dockerfile.prod
+          run: docker build -t registry.heroku.com/newsapp-cp4/web -f Dockerfile.prod
+           
+        - name: push registry
+          run: docker push registry.heroku.com/newsapp-cp4/web
+            
+        - name: db migration
+          run: docker exec newsapp-cp4_php_1 bin/cake migrations migrate
+
+            # docker exec newsapp-cp4_php_1 composer update  
+            
             
