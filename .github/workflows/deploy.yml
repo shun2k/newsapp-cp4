@@ -51,5 +51,8 @@ jobs:
             heroku update
             sudo apt-get update
             sudo apt-get install -y docker-compose
-            docker-compose -f docker-compose_prod.yml up -d --build
+            docker build -t registry.heroku.com/newsapp-cp4/web -f Dockerfile.prod
+            docker push registry.heroku.com/newsapp-cp4/web
             docker exec newsapp-cp4_php_1 composer update  
+            docker exec newsapp-cp4_php_1 bin/cake migrations migrate
+            
