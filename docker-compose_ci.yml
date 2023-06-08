@@ -22,10 +22,10 @@ services:
       - APP_DEFAULT_LOCALE=${APP_DEFAULT_LOCALE}
       - APP_DEFAULT_TIMEZONE=${APP_DEFAULT_TIMEZONE}
       - SECURITY_SALT=${SECURITY_SALT}
-      - OPENWEATHER_ONEDAY_URL=${OPENWEATHER_ONEDAY_URL}
-      - OPENWEATHER_FIVEDAYS_URL=${OPENWEATHER_FIVEDAYS_URL}
+      - OPENWEATHER_ONEDAY_URL=http://api.openweathermap.org/data/2.5/weather?units=metric&q=
+      - OPENWEATHER_FIVEDAYS_URL=http://api.openweathermap.org/data/2.5/forecast?units=metric&q=
       - OPENWEATHER_KEY=${OPENWEATHER_KEY}
-      - NEWSAPI_URL=${NEWSAPI_URL}
+      - NEWSAPI_URL=https://newsapi.org/v2/top-headlines?country=jp
       - NEWSAPI_KEY=${NEWSAPI_KEY}
 
   db:
