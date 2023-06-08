@@ -24,7 +24,7 @@ RUN apt-get update \
     && docker-php-ext-install pdo_mysql mysqli mbstring intl \
     && a2enmod rewrite  
 
-RUN rm -rf /etc/apache2
+# RUN rm -rf /etc/apache2
 
 ENTRYPOINT []
 CMD ["find", "/etc/apache2"]
