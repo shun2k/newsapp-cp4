@@ -25,3 +25,8 @@ RUN apt-get update \
 
 COPY . .
 COPY .htaccess /var/www/html/
+
+# Apacheの設定ファイルを追加
+COPY apache.conf /etc/apache2/conf-available/
+# Apacheの設定を有効化
+RUN a2enconf apache.conf
