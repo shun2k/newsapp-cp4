@@ -1,13 +1,11 @@
 # .htaccess
 
 # Set the MPM module to use
-<IfModule mod_mpm_worker.c>
-    # Use worker MPM
+<IfModule mod_mpm_prefork.c>
+    # Use prefork MPM
     StartServers             2
-    MinSpareThreads          25
-    MaxSpareThreads          75
-    ThreadLimit              64
-    ThreadsPerChild          25
+    MinSpareServers          6
+    MaxSpareServers          12
     MaxRequestWorkers        150
     MaxConnectionsPerChild   0
 </IfModule>
