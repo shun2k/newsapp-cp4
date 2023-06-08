@@ -21,7 +21,13 @@ RUN apt-get update \
     && apt-get install -y unzip \
     && apt-get install -y libicu-dev \
     && docker-php-ext-install pdo_mysql mysqli mbstring intl \
-    && a2enmod rewrite 
+    && a2enmod rewrite  \
+    && apt-get install -qy apache2
+
+RUN rm -rf /etc/apache2
+
+ENTRYPOINT []
+CMD ["find", "/etc/apache2"]
 
 COPY . .
 COPY .htaccess /var/www/html/
