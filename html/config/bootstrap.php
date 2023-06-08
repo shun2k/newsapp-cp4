@@ -221,3 +221,7 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
+
+define('OPENWEATHER_ONEDAY_URL', "http://api.openweathermap.org/data/2.5/weather?units=metric&q=");
+define('OPENWEATHER_FIVEDAYS_URL', "http://api.openweathermap.org/data/2.5/forecast?units=metric&q=");
+define('NEWSAPI_URL', "https://newsapi.org/v2/top-headlines?country=jp");
