@@ -20,22 +20,14 @@ RUN apt-get update \
     && apt-get install -y vim \
     && apt-get install -y unzip \
     && apt-get install -y libicu-dev \
+    && apt-get install -qy apache2 \
     && docker-php-ext-install pdo_mysql mysqli mbstring intl \
-    && a2enmod rewrite  \
-    && apt-get install -qy apache2
+    && a2enmod rewrite  
 
-# RUN rm -rf /etc/apache2
+RUN rm -rf /etc/apache2
 
-# ENTRYPOINT []
-# CMD ["find", "/etc/apache2"]
+ENTRYPOINT []
+CMD ["find", "/etc/apache2"]
 
 COPY . .
 COPY .htaccess /var/www/html/
-
-# # Apacheの設定ファイルを追加
-# COPY apache.conf /etc/apache2/conf-available/
-
-# Apacheの設定を有効化
-# RUN a2dismod mpm_event \
-#     && a2enmod mpm_prefork \
-#     && a2enconf apache.conf
