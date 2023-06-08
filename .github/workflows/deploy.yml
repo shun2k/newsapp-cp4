@@ -19,7 +19,7 @@ jobs:
             heroku_app_name: "newsapp-cp4"
             heroku_email: ${{secrets.HEROKU_EMAIL}} 
             usedocker: true
-            procfile: "web: npm start"
+            # procfile: "web: npm start"
            
         # - name: db migration
         #   run: docker exec newsapp-cp4_php_1 bin/cake migrations migrate
