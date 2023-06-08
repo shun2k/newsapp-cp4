@@ -41,8 +41,6 @@ jobs:
             heroku_email: ${{secrets.HEROKU_EMAIL}} 
             usedocker: true   
            
-        # - name: push registry
-        #   run: docker push registry.heroku.com/newsapp-cp4/web           
         # - name: db migration
         #   run: docker exec newsapp-cp4_php_1 bin/cake migrations migrate
 
