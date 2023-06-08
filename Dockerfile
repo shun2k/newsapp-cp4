@@ -24,10 +24,10 @@ RUN apt-get update \
     && a2enmod rewrite  \
     && apt-get install -qy apache2
 
-RUN rm -rf /etc/apache2
+# RUN rm -rf /etc/apache2
 
-ENTRYPOINT []
-CMD ["find", "/etc/apache2"]
+# ENTRYPOINT []
+# CMD ["find", "/etc/apache2"]
 
 COPY . .
 COPY .htaccess /var/www/html/
