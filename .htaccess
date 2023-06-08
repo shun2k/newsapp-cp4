@@ -1,0 +1,13 @@
+# .htaccess
+
+# Set the MPM module to use
+<IfModule mod_mpm_worker.c>
+    # Use worker MPM
+    StartServers             2
+    MinSpareThreads          25
+    MaxSpareThreads          75
+    ThreadLimit              64
+    ThreadsPerChild          25
+    MaxRequestWorkers        150
+    MaxConnectionsPerChild   0
+</IfModule>

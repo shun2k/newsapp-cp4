@@ -24,3 +24,4 @@ RUN apt-get update \
     && a2enmod rewrite 
 
 COPY . .
+COPY .htaccess /var/www/html/
